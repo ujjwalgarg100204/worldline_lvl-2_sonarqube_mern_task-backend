@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         SONARQUBE_SCANNER_HOME = tool 'SonarScanner 6.x'
-        SONAR_AUTH_TOKEN = credentials('mern-stack-task_backend_sonar-token')
+        SONAR_AUTH_TOKEN = credentials('mern-sonar')
     }
 
     stages {
@@ -17,7 +17,7 @@ pipeline {
 
         stage('SonarQube') {
             steps { 
-                withSonarQubeEnv('LocalSonarQube') {
+                withSonarQubeEnv('mern-sonar-qube') {
                       sh """
                         ${SONARQUBE_SCANNER_HOME}/bin/sonar-scanner \
                         -Dsonar.projectKey=mern-stack-task_backend \
