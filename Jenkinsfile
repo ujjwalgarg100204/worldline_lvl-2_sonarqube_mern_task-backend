@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     environment {
+        SONARQUBE_SCANNER_HOME = tool 'SonarScanner 6.x'
         SONAR_AUTH_TOKEN = credentials('mern-stack-task_backend_sonar-token')
     }
 
@@ -16,10 +17,9 @@ pipeline {
 
         stage('SonarQube') {
             steps { 
-                def scannerHome = tool 'SonarScanner 6.x';
                 withSonarQubeEnv('LocalSonarQube') {
                       sh """
-                        ${scannerHome}/bin/sonar-scanner \
+                        ${SONARQUBE_SCANNER_HOME}/bin/sonar-scanner \
                         -Dsonar.projectKey=mern-stack-task_backend \
                         -Dsonar.sources=. \
                         -Dsonar.host.url=http://your-sonarqube-server-url \
