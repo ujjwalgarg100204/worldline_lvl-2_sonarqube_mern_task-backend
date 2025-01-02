@@ -22,7 +22,6 @@ pipeline {
                         ${SONARQUBE_SCANNER_HOME}/bin/sonar-scanner \
                         -Dsonar.projectKey=mern-stack-task_backend \
                         -Dsonar.sources=. \
-                        -Dsonar.host.url=http://your-sonarqube-server-url \
                         -Dsonar.token=${SONAR_AUTH_TOKEN}
                         """
                 }
